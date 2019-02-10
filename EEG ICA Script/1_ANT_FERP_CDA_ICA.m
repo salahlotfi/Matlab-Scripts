@@ -24,7 +24,7 @@ folder_list = {'120' '121'} '103' '105' '106' '107' '108'}
 
 nsubj = length(subject_list); % number of subjects
 
-home_path  = 'C:\Users\PSY-LEELAB-VA\Desktop\FERP\Data\CDA\';
+home_path  = 'C:\Users\....\';
 
 % Set the save_everything variable to 1 to save all of the intermediate files to the hard drive
 % Set to 0 to save only the initial and final dataset and ERPset for each subject
@@ -59,7 +59,7 @@ for s=1:nsubj
         % **Only need this if don't manually populate channels**
         %
         fprintf('\n\n\n**** %s: Adding channel location info ****\n\n\n', subject_list{s});
-        %EEG = pop_chanedit(EEG, 'load',{'/media/2_larson_buffalo/NON-MRI7_2/EEG/studies/Hanjoo_WM_Training/data/NewSystemTest/CDAChrisAnt/emoregelc.elc' 'filetype' 'autodetect'});        
+        %EEG = pop_chanedit(EEG, 'load',{'/media/2_larson_buffalo/data/NewSystemTest/CDAChrisAnt/emoregelc.elc' 'filetype' 'autodetect'});        
         EEG = pop_chanedit(EEG, 'lookup','FERPelc.elc');
         % Save dataset with _chan suffix instead of _EEG
         EEG.setname = [subject_list{s} '_chan']; % name for the dataset menu
