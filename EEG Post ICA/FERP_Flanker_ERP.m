@@ -1,4 +1,6 @@
-% Clear memory and the command window
+% I wrote this script to calculate ERP values obtained from EEGlab .set artifict rejected data. 
+
+%Clear memory and the command window
 
 %%%%%%%#######^^^^^^^^THINGS to Check before running the script:
 %%%%%%%%%%%% 1) The name of the ERPsets inputs and outputs.
