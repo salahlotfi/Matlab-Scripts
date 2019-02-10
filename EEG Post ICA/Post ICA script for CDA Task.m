@@ -1,6 +1,4 @@
-% This script was written on 7.17.15 and is different from the original
-% WME_Post script because it removes temporal channels and extended the
-% window to capture the full CDA
+% This script is written by ANL at UWM and modified by Sala Lotfi at ADL, UWM.
 
 
 % Clear memory and the command window
@@ -13,37 +11,10 @@ CURRENTERP = 0;
 
 
 % This defines the set of subjects
-subject_list = {'120''121''122''123''126''124' '125'}  % '107_3' '108_3' '112_1' '112_3' '129_2' '131_1' '140_1' '143_3'}
-folder_list = {'120''121''122''123''126''124' '125'} % '129' '131' '140' '143'}
-
-%Needs to be run:  
-%  
-%   
-% 
-% 
+subject_list = {'120''121''122''123''126''124' '125'}  
+folder_list = {'120''121''122''123''126''124' '125'} 
 
 
-
-
-% Already ran:
-%  106_2 106_3' '107_1' '107_2''108_1' 108_2
-% '109_1' '110_1' '111_1' '112_2' '113_1' '113_2' '113_3' '114_1'
-%  116_1' '115_1' '115_2' '115_3' '116_2' '116_3'
-% '117_1' '119_1' '119_2' '119_3' '118_1' '120_1' '120_2' '120_3'
-% '122_1' '121_1' '121_2' '121_3' '127_1' '123_1' '123_2' '123_3' '124_1' '124_2' '124_3' '125_1' '125_2' '125_3' '126_1' '126_2' '126_3'
-% 129_1' '128_1' '128_2' '128_3' '129_3' '130_1' '130_2' '131_3' '131_2' '131_3' '132_1' '132_2' '133_1' '133_2' '133_3' '134_1' '134_2' '134_3'
-% '137_1' '136_1' '136_2' '138_1' '138_3' '135_1' '135_2' '135_3' '139_1' '141_1' '141_2' '141_3' '142_1' '142_2' '142_3' '143_1' '143_2' '143_3'
-%'144_1' '148_1' '145_1' '145_2' '145_3' '146_1' '146_2' '146_3' '147_1' '147_2' '147_3' '149_1' '149_2' '149_3'
-
-
-% (FOLDERS) '103' '104' '105' '107' '108' '108' '108' '110' '111' '112' 
-% '113' '113' '114' '115' '115' '115' '116' '117' '118' '119' '119' '120' 
-% '120' '121' '122' '123' '123' '124' '124' '124' '125' '125' '125' '126' 
-% '128' '129' '130' '132' '132' '133' '133' '134' '134' '134' '135' '135' 
-% '135' '136' '136' '137' '138' 
-% '106' '106' '107' '120' '121' '123' '126' '126' '127' '128' '128' '128' '129' '129' '130' '133' '137' '138'
-% '106' '107' '139' '139' '139' '140' '141' '141' '141' '142' '142' '145' '145' '145' '146' '146' '146' '147' '147'
-% '138' '142' '142' '143' '143' '143' '144' '148' '145' '145' '145' '146' '146' '146' '147' '147' '147' '149' '149' '149'
 
 
 
@@ -51,7 +22,7 @@ nsubj = length(subject_list); % number of subjects
 
 
 % Path to the parent folder, which contains the data folders for all subjects
-home_path  = 'C:\Users\PSY-LEELAB-VA\Desktop\FERP\Data\CDA\';
+home_path  = 'C:\Users\Data\CDA\';
 
 % Set the save_everything variable to 1 to save all of the intermediate files to the hard drive
 % Set to 0 to save only the initial and final dataset and ERPset for each subject
@@ -125,7 +96,7 @@ EEG = pop_reref( EEG, [18 34] );
         %
         fprintf('\n\n\n**** %s: Creating eventlist ****\n\n\n', subject_list{s}); 
         EEG.setname = [EEG.setname '_el']; % name for the dataset menu
-        EEG = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'Eventlist', ['C:\Users\PSY-LEELAB-VA\Desktop\FERP\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], ...
+        EEG = pop_creabasiceventlist( EEG , 'AlphanumericCleaning', 'on', 'Eventlist', ['C:\Users\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], ...
             'Newboundary', { -99 }, 'Stringboundary', { 'boundary' }, 'Warning', 'on' ); 
          
         pop_squeezevents(EEG);
@@ -141,8 +112,8 @@ EEG = pop_reref( EEG, [18 34] );
         fprintf('\n\n\n**** %s: Running BinLister ****\n\n\n', subject_list{s});		 
 	EEG.setname = [EEG.setname '_bn']; 
 EEG = pop_binlister( EEG , 'BDF', 'C:\Users\PSY-LEELAB-VA\Desktop\FERP\MainScripts\FERP stuff\Ready to Use Flanker Scripts\FERP_CDA_Bin.txt', ...
-    'ExportEL', ['C:\Users\PSY-LEELAB-VA\Desktop\FERP\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], 'ImportEL', ...
-['C:\Users\PSY-LEELAB-VA\Desktop\FERP\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], 'Saveas', 'on', 'SendEL2', 'EEG&Text', 'Warning', 'on' );
+    'ExportEL', ['C:\Users\FERP\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], 'ImportEL', ...
+['C:\Users\RejectionTables&OLD\rejectiontables\CDA\elist\',[subject_list{s} '.txt']], 'Saveas', 'on', 'SendEL2', 'EEG&Text', 'Warning', 'on' );
         %if (save_everything) 
 		EEG = pop_saveset(EEG, 'filename', [EEG.setname '.set'], 'filepath', data_path); 
        % end  
@@ -259,7 +230,7 @@ EEG = pop_binlister( EEG , 'BDF', 'C:\Users\PSY-LEELAB-VA\Desktop\FERP\MainScrip
         %artifact_proportion = getardetection(EEG);
 	%fprintf(fp, '%s: Percentage of rejected trials was %1.2f\n', subject_list{s}, artifact_proportion);
 	%fclose(fp)
-        EEG = pop_summary_AR_eeg_detection(EEG, ['C:\Users\PSY-LEELAB-VA\Desktop\FERP\RejectionTables&OLD\rejectiontables\CDA\rejection\',[subject_list{s} '.txt']])
+        EEG = pop_summary_AR_eeg_detection(EEG, ['C:\Users\FERP\RejectionTables&OLD\rejectiontables\CDA\rejection\',[subject_list{s} '.txt']])
 
         %
         % Averaging. Only good trials.  Include standard deviation.  Save to disk.
