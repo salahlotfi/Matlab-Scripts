@@ -1,4 +1,5 @@
-% Clear memory and the command window
+%This program is written by ANL at UWM and modified by Sala Lotfi to calculate contralateral and ipsilateral values for change detection task using EEGlab. 
+%Clear memory and the command window
 clear
 clc
 
@@ -11,7 +12,7 @@ folder_list = {'123' '126' }
 
 
 nsubj = length(subject_list); % number of subjects
-home_path  = 'C:\Users\PSY-LEELAB-VA\Desktop\FERP\Data\CDA\';
+home_path  = 'C:\Users\FERP\Data\CDA\';
 
 
 
