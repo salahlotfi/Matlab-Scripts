@@ -1,0 +1,27 @@
+Bin 1
+Pure Corr
+.{11;12}{3;4;6}
+
+Bin 2
+Abs20 Corr
+.{21;22}{3;4;6}
+
+Bin 3
+Con20 Corr
+.{23;24}{3;4;6}
+
+Bin 4
+Inco20 Corr
+.{25;26}{3;4;6}
+
+Bin 5
+Abs60 Corr
+.{31;32}{3;4;6}
+
+Bin 6
+Con60 Corr
+.{33;34}{3;4;6}
+
+Bin 7
+Inco60 Corr
+.{35;36}{3;4;6}
